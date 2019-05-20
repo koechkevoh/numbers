@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Permutations<T> {
+public class FamilyEvent<oddEven> {
     public static void main(String args[]) {
-        Permutations<Integer> obj = new Permutations<Integer>();
+        FamilyEvent<Integer> obj = new FamilyEvent<Integer>();
         Collection<Integer> family = new ArrayList<Integer>();
         
         Scanner s =new Scanner(System.in);
@@ -29,6 +29,11 @@ public class Permutations<T> {
         
         int O =s.nextInt();
         family.add(O);
+        
+        System.out.println("Enter odd number");
+        
+        int r =s.nextInt();
+        family.add(r);
 
         Collection<List<Integer>> output = obj.permute(family);
         int k = 0;
@@ -48,20 +53,20 @@ public class Permutations<T> {
     }
     
     
-    public Collection<List<T>> permute(Collection<T> input) {
-        Collection<List<T>> output = new ArrayList<List<T>>();
+    public Collection<List<oddEven>> permute(Collection<oddEven> input) {
+        Collection<List<oddEven>> output = new ArrayList<List<oddEven>>();
         if (input.isEmpty()) {
-            output.add(new ArrayList<T>());
+            output.add(new ArrayList<oddEven>());
             return output;
         }
         
-        List<T> list = new ArrayList<T>(input);
-        T head = list.get(0);
-        List<T> rest = list.subList(1, list.size());
-        for (List<T> permutations : permute(rest)) {
-            List<List<T>> subLists = new ArrayList<List<T>>();
+        List<oddEven> list = new ArrayList<oddEven>(input);
+        oddEven head = list.get(0);
+        List<oddEven> rest = list.subList(1, list.size());
+        for (List<oddEven> permutations : permute(rest)) {
+            List<List<oddEven>> subLists = new ArrayList<List<oddEven>>();
             for (int i = 0; i <= permutations.size(); i++) {
-                List<T> subList = new ArrayList<T>();
+                List<oddEven> subList = new ArrayList<oddEven>();
                 subList.addAll(permutations);
                 subList.add(i, head);
                 subLists.add(subList);
